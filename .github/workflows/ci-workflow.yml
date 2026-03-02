@@ -1,6 +1,10 @@
 name: Continuous Integration
-on: [push]                      # Will make the workflow run every time you push to any branch
-
+on:
+  push:
+    branches: [ main ]                      # Will make the workflow run every time you push to any branch
+  pull_request:
+    branches: [ main ]
+    
 jobs:
   build:
     name: Build and test

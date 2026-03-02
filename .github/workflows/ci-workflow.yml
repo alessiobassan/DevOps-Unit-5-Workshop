@@ -8,6 +8,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4 # Adds a step to checkout the repository code
 
+    - uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
 
     - name: Build C#
       run: dotnet build
@@ -15,9 +18,13 @@ jobs:
     - name: Test C#
       run: dotnet test
 
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '24.x'
+
     - name: Install npm packages
       working-directory: DotnetTemplate.Web
-      run: npm in
+      run: npm install
 
     - name: Build TypeScript
       working-directory: DotnetTemplate.Web
